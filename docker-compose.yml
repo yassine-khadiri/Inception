@@ -8,3 +8,12 @@ services:
     container_name: nginx-container
     build: ./nginx/.
     image: nginx
+  mariadb:
+    container_name: mariadb-container
+    build: ./mariadb/.
+    image: mariadb
+  wordpress-php-fpm:
+    container_name: wordpress-php-fpm-container
+    build: ./wordpress+php-fpm/.
+    image: wordpress-php-fpm
+  

@@ -6,13 +6,13 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 17:55:11 by ykhadiri          #+#    #+#              #
-#    Updated: 2023/01/09 18:38:31 by ykhadiri         ###   ########.fr        #
+#    Updated: 2023/01/09 18:39:07 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM debian:bullseye
 
-RUN sudo apt update
+RUN apt update
 
 RUN apt install nginx -y 
 

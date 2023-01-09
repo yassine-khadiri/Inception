@@ -1,0 +1,10 @@
+version: '3'
+services:
+  debian:
+    container_name: debian-container
+    build: ./debian/.
+    image: debian
+  nginx:
+    container_name: nginx-container
+    build: ./nginx/.
+    image: nginx

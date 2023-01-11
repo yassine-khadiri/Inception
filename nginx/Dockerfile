@@ -6,13 +6,11 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 17:55:11 by ykhadiri          #+#    #+#              #
-#    Updated: 2023/01/11 14:54:06 by ykhadiri         ###   ########.fr        #
+#    Updated: 2023/01/11 15:00:33 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM debian:bullseye
-
-RUN apt-get install sudo
 
 RUN sudo apt update
 

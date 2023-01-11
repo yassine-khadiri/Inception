@@ -6,15 +6,17 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 17:55:11 by ykhadiri          #+#    #+#              #
-#    Updated: 2023/01/09 19:01:05 by ykhadiri         ###   ########.fr        #
+#    Updated: 2023/01/11 14:04:24 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM debian:bullseye
 
-RUN apt update
+RUN sudo apt update
 
-RUN apt install nginx -y 
+RUN sudo apt install nginx -y 
+
+RUN sudo apt-get -y install openssl
 
 COPY index.html /var/www/html
 

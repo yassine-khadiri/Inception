@@ -6,7 +6,7 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 17:56:12 by ykhadiri          #+#    #+#              #
-#    Updated: 2023/01/13 18:03:48 by ykhadiri         ###   ########.fr        #
+#    Updated: 2023/01/13 18:06:06 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,5 +15,3 @@ FROM debian:buster
 RUN apt update
 
 RUN apt install mariadb-server -y
-
-RUN mysql_secure_installation

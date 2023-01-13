@@ -6,11 +6,11 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 17:55:11 by ykhadiri          #+#    #+#              #
-#    Updated: 2023/01/11 15:00:33 by ykhadiri         ###   ########.fr        #
+#    Updated: 2023/01/13 15:17:25 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FROM debian:bullseye
+FROM debian:buster
 
 RUN sudo apt update
 

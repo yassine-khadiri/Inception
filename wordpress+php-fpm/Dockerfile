@@ -6,10 +6,11 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 19:03:44 by ykhadiri          #+#    #+#              #
-#    Updated: 2023/01/13 15:16:36 by ykhadiri         ###   ########.fr        #
+#    Updated: 2023/01/14 14:40:59 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM debian:buster
 
-RUN apt install php php-fpm
+RUN apt-get install php-fpm
+

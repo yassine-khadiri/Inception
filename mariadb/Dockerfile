@@ -6,11 +6,13 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 17:56:12 by ykhadiri          #+#    #+#              #
-#    Updated: 2023/01/14 13:59:14 by ykhadiri         ###   ########.fr        #
+#    Updated: 2023/01/14 14:09:24 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM debian:buster
+
+RUN apt-get install apt-utils -y
 
 RUN apt-get update
 

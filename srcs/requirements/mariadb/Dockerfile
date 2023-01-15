@@ -6,12 +6,12 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 17:56:12 by ykhadiri          #+#    #+#              #
-#    Updated: 2023/01/15 16:41:33 by ykhadiri         ###   ########.fr        #
+#    Updated: 2023/01/15 16:42:40 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM debian:buster
 
-RUN apt-get update -y && \
-    install mariadb-server
+RUN apt-get update && \
+    install -y mariadb-server
 

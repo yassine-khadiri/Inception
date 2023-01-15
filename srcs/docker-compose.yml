@@ -1,22 +1,17 @@
 version: '3'
 services:
-  debian:
-    container_name: debian-container
-    restart: always
-    build: ./debian/.
-    image: debian
   nginx:
     container_name: nginx-container
     restart: always
-    build: ./nginx/.
+    build: ./requirements/nginx/.
     image: nginx
   mariadb:
     container_name: mariadb-container
     restart: always
-    build: ./mariadb/.
+    build: ./requirements/mariadb/.
     image: mariadb
-  wordpress-php-fpm:
-    container_name: wordpress-php-fpm-container
+  wordpress:
+    container_name: wordpress-container
     restart: always
-    build: ./wordpress+php-fpm/.
-    image: wordpress-php-fpm
+    build: ./requirements/wordpress/.
+    image: wordpress

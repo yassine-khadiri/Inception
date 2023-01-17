@@ -1,10 +1,5 @@
 version: '3'
 services:
-  nginx:
-    container_name: nginx
-    build: ./requirements/nginx/.
-    restart: always
-    image: nginx
   mariadb:
     container_name: mariadb
     build: ./requirements/mariadb/.
@@ -12,8 +7,40 @@ services:
     image: mariadb
     env_file:
       - .env
+    volumes:
+      -db_data:/var/lib/mysql/
+    depends_on:
+      - nginx
+    ports:
+      - "3306:3306"
+    networks:
+      - docker-network
+  nginx:
+    container_name: nginx
+    build: ./requirements/nginx/.
+    restart: on-failure
+    image: nginx
+    depends_on:
+      - wordpress
+    volumes:
+      -wp_data:/var/www/html/
+    ports:
+      -"443:443"
+    networks:
+      - docker-network
   wordpress:
     container_name: wordpress
     build: ./requirements/wordpress/.
     restart: always
     image: wordpress
+    volumes:
+      -wp_data:/var/www/html/
+    depends_on:
+      - mariadb
+    ports:
+      - "9000:9000"
+    networks:
+      - docker-network
+networks:
+  docker-network:
+    driver: bridge

@@ -6,18 +6,23 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 19:03:44 by ykhadiri          #+#    #+#              #
-#    Updated: 2023/01/16 17:06:20 by ykhadiri         ###   ########.fr        #
+#    Updated: 2023/01/17 19:35:28 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM debian:buster
 
 RUN apt update && \
-    apt install php-fpm -y && \
+    apt install php7.4-fpm -y && \
     apt install wget -y
 
-RUN wget https://wordpress.org/latest.tar.gz
+COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 
-RUN tar -xvf latest.tar.gz
+COPY ./tools/script.sh /tmp/
 
-RUN rm -rf latest.tar.gz
+RUN chmod +x /tmp/script.sh
+
+ENTRYPOINT ["/tmp/script.sh"]
+
+EXPOSE 9000
+

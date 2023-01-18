@@ -6,7 +6,7 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 19:03:44 by ykhadiri          #+#    #+#              #
-#    Updated: 2023/01/17 19:35:28 by ykhadiri         ###   ########.fr        #
+#    Updated: 2023/01/18 13:17:44 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,4 +25,3 @@ RUN chmod +x /tmp/script.sh
 ENTRYPOINT ["/tmp/script.sh"]
 
 EXPOSE 9000
-

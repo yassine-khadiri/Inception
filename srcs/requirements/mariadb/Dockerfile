@@ -6,7 +6,7 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 17:56:12 by ykhadiri          #+#    #+#              #
-#    Updated: 2023/01/17 15:37:24 by ykhadiri         ###   ########.fr        #
+#    Updated: 2023/01/18 15:36:07 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ FROM debian:buster
 RUN apt update && \
     apt install -y mariadb-server
 
-# COPY ./tools/script.sh /tmp/script.sh
+# COPY ./tools/script.sh /tmp/
 
 # RUN chmod +x /tmp/script.sh
 

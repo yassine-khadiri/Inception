@@ -1,12 +1,14 @@
 #!/bin/sh
 
-wget https://wordpress.org/latest.tar.gz
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
-tar -xvzf latest.tar.gz
+chmod +x wp-cli.phar
 
-mv wordpress /var/www/html/
+mv wp-cli.phar /usr/local/bin/wp
 
-rm -f latest.tar.gz
+cd /var/www/html/
+
+wp core download --allow-root
 
 cp  /var/www/html/wordpress/wp-config-sample.php /var/www/html/wordpress/wp-config.php
 

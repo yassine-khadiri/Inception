@@ -3,12 +3,12 @@ services:
   mariadb:
     container_name: mariadb
     build: ./requirements/mariadb/.
-    restart: always
+    restart: on-failure
     image: mariadb
     env_file:
       - .env
     volumes:
-      -db_data:/var/lib/mysql/
+      -db_data:/var/lib/mysql
     depends_on:
       - nginx
     ports:
@@ -23,7 +23,7 @@ services:
     depends_on:
       - wordpress
     volumes:
-      -wp_data:/var/www/html/
+      -wp_data:/var/www/html
     ports:
       -"443:443"
     networks:
@@ -31,8 +31,10 @@ services:
   wordpress:
     container_name: wordpress
     build: ./requirements/wordpress/.
-    restart: always
+    restart: on-failure
     image: wordpress
+    env_file:
+      - .env
     volumes:
       -wp_data:/var/www/html/
     depends_on:
@@ -41,6 +43,21 @@ services:
       - "9000:9000"
     networks:
       - docker-network
+
+volumes:
+  db_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/ykhadiri/data/
+      o: bind
+  wp_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/ykhadiri/data/
+      o: bind
+
 networks:
   docker-network:
     driver: bridge

@@ -6,7 +6,7 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 19:03:44 by ykhadiri          #+#    #+#              #
-#    Updated: 2023/01/18 13:17:44 by ykhadiri         ###   ########.fr        #
+#    Updated: 2023/01/19 16:30:52 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RUN apt update && \
 
 COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 
-COPY ./tools/script.sh /tmp/
+COPY ./tools/script.sh /tmp/script.sh
 
 RUN chmod +x /tmp/script.sh
 

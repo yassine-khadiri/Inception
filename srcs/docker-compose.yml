@@ -9,8 +9,6 @@ services:
       - .env
     volumes:
       -db_data:/var/lib/mysql
-    depends_on:
-      - nginx
     ports:
       - "3306:3306"
     networks:

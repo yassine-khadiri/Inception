@@ -6,7 +6,7 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 17:55:11 by ykhadiri          #+#    #+#              #
-#    Updated: 2023/01/17 16:13:29 by ykhadiri         ###   ########.fr        #
+#    Updated: 2023/01/20 15:27:55 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ RUN apt update && \
     -out /etc/ssl/certs/nginx-selfsigned.crt \
     -subj="/CN=ykhadiri/O=ykhadiri.1337.ma/C=MA/L=KHOURIBGA"
 
-COPY ./conf/default /etc/nginx/sites-enabled/default
+COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 443
 

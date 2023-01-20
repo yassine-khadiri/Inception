@@ -8,7 +8,7 @@ mv wp-cli.phar /usr/local/bin/wp
 
 cd /var/www/html/
 
-wp core download --allow-root
+wp core download
 
 cp  /var/www/html/wordpress/wp-config-sample.php /var/www/html/wordpress/wp-config.php
 

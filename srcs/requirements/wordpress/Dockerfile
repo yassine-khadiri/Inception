@@ -6,17 +6,19 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 19:03:44 by ykhadiri          #+#    #+#              #
-#    Updated: 2023/01/20 19:34:39 by ykhadiri         ###   ########.fr        #
+#    Updated: 2023/01/21 20:25:27 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM debian:buster
 
-RUN apt update && \
-    apt install php7.4 php7.4-fpm -y && \
-    apt install curl -y
+RUN apt-get update && \
+    apt-get install php7.3 php7.3-fpm -y && \
+    apt-get install curl -y
 
-COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
+COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
+
+RUN mkdir /run/php
 
 COPY ./tools/script.sh /tmp/script.sh
 

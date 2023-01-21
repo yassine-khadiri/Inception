@@ -8,9 +8,9 @@ services:
     env_file:
       - .env
     volumes:
-      -db_data:/var/lib/mysql
+      - 'db_data:/var/lib/mysql'
     ports:
-      - "3306:3306"
+      - '3306:3306'
     networks:
       - docker-network
   nginx:
@@ -21,9 +21,9 @@ services:
     depends_on:
       - wordpress
     volumes:
-      -wp_data:/var/www/html
+      - 'wp_data:/var/www/html'
     ports:
-      -"443:443"
+      - '43:443'
     networks:
       - docker-network
   wordpress:
@@ -34,11 +34,11 @@ services:
     env_file:
       - .env
     volumes:
-      -wp_data:/var/www/html/
+      - 'wp_data:/var/www/html'
     depends_on:
       - mariadb
     ports:
-      - "9000:9000"
+      - '9000:9000'
     networks:
       - docker-network
 
@@ -47,13 +47,13 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/ykhadiri/data/
+      device: /home/ykhadiri/data/db
       o: bind
   wp_data:
     driver: local
     driver_opts:
       type: none
-      device: /home/ykhadiri/data/
+      device: /home/ykhadiri/data/wordpress
       o: bind
 
 networks:

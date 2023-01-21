@@ -21,10 +21,10 @@ down:
 	docker-compose -f $(DOCKER_COMPOSE) down
 
 clean:
-	docker rm -f $$(docker ps -a -q)
-	docker volume rm $$(docker volume ls -q)
+	docker container prune -f
+	docker volume prune -f
 	docker network prune -f
 	$(shell sudo rm -fr /home/ykhadiri/data)
 
 fclean: clean
-	docker rmi -f $$(docker images -q)
+	docker rmi -f $$(docker images -a)

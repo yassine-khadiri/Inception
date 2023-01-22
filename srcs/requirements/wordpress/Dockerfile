@@ -13,8 +13,9 @@
 FROM debian:buster
 
 RUN apt-get update && \
-    apt-get install php7.3 php7.3-fpm -y && \
-    apt-get install curl -y
+    apt-get install php php7.3-fpm -y && \
+    apt-get install curl -y && \
+    apt-get install php-mysql -y
 
 COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 
@@ -28,4 +29,4 @@ ENTRYPOINT ["/tmp/script.sh"]
 
 EXPOSE 9000
 
-CMD ["php-fpm7.4", "-F"]
+CMD ["php-fpm7.3", "-F"]

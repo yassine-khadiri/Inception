@@ -20,7 +20,7 @@ RUN apt-get update && \
     -out /etc/ssl/certs/nginx-selfsigned.crt \
     -subj="/CN=ykhadiri/O=ykhadiri.1337.ma/C=MA/L=KHOURIBGA"
 
-COPY ./conf/nginx.conf /etc/nginx/nginx.conf
+COPY ./conf/nginx.conf /etc/nginx/
 
 EXPOSE 443
 

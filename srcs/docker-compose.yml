@@ -23,7 +23,7 @@ services:
     volumes:
       - 'wordpress:/var/www/html'
     ports:
-      - '43:443'
+      - '443:443'
     networks:
       - docker-network
   wordpress:

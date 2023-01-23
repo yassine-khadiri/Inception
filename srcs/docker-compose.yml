@@ -42,6 +42,21 @@ services:
     networks:
       - docker-network
 
+# ----------------------- Bonus Part -----------------------
+  adminer:
+    container_name: adminer
+    build: ./requirements/bonus/adminer/.
+    image: adminer
+    restart: always
+    depends_on:
+      - mariadb
+    ports:
+      - '8080:8080'
+    networks:
+      - docker-network
+
+# ----------------------------------------------------------
+
 volumes:
   db:
     driver: local

@@ -13,7 +13,7 @@
 FROM debian:buster
 
 RUN apt-get update && \
-    apt-get install -y php && \
+    apt-get install -y php php-mysql && \
     apt-get install -y wget && \
     wget "http://www.adminer.org/latest.php" -O /var/www/html/adminer.php
 

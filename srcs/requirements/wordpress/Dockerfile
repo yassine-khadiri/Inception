@@ -6,7 +6,7 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 19:03:44 by ykhadiri          #+#    #+#              #
-#    Updated: 2023/01/21 20:25:27 by ykhadiri         ###   ########.fr        #
+#    Updated: 2023/01/26 00:51:26 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,11 +21,11 @@ COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 
 RUN mkdir /run/php
 
-COPY ./tools/script.sh /tmp/script.sh
+COPY ./tools/wordpress.sh /tmp/wordpress.sh
 
-RUN chmod +x /tmp/script.sh
+RUN chmod +x /tmp/wordpress.sh
 
-ENTRYPOINT ["/tmp/script.sh"]
+ENTRYPOINT ["/tmp/wordpress.sh"]
 
 EXPOSE 9000
 

@@ -11,4 +11,5 @@ mysql -u root -p$MYSQL_ROOT_PASSWORD -e "CREATE USER IF NOT EXISTS '$MYSQL_USER'
                     FLUSH PRIVILEGES;"
 
 kill `cat /var/run/mysqld/mysqld.pid`
+
 exec "$@"

@@ -23,6 +23,10 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     wp core install --allow-root --url=$DOMAIN_NAME --title="cars" --admin_user=$ADMIN_USER --admin_email=$ADMIN_EMAIL --admin_password=$ADMIN_PASSWORD
 
     wp user create --allow-root $WP_USER $WP_USER_EMAIL --user_pass=$WP_USER_PASSWORD
+
+    # ------------------- Bonus Part ------------------- #
+
+    wp plugin install redis-cache --activate
 fi
 
 exec "$@"

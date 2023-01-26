@@ -65,6 +65,20 @@ services:
     networks:
       - docker-network
 
+  ftp-server:
+    container_name: ftp-server
+    build: ./requirements/bonus/ftp_server/.
+    restart: on-failure
+    image: ftp
+    volumes:
+      - 'wordpress:/var/www/html'
+    depends_on:
+      - wordpress
+    ports:
+      - '21:21'
+    networks:
+      - docker-network
+
 # ----------------------------------------------------------
 
 volumes:

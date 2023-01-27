@@ -24,4 +24,4 @@ ENTRYPOINT ["/tmp/redis.sh"]
 
 EXPOSE 6379
 
-CMD ["redis-server"]
+CMD ["redis-server", "--protected-mode", "no"]

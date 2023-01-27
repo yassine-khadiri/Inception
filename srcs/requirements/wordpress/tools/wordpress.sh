@@ -25,8 +25,15 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     wp user create --allow-root $WP_USER $WP_USER_EMAIL --user_pass=$WP_USER_PASSWORD
 
     # ------------------- Bonus Part ------------------- #
+    
+    wp config set --allow-root WP_CACHE_KEY_SALT $DOMAIN_NAME
+    wp config set --allow-root WP_CACHE true
+    wp config set --allow-root WP_REDIS_HOST redis
+    wp config set --allow-root WP_REDIS_PORT 6379
 
-    wp plugin install redis-cache --activate
+    wp plugin install --allow-root redis-cache --activate
+    wp redis enable --allow-root
+
 fi
 
 exec "$@"

@@ -60,6 +60,8 @@ services:
     build: ./requirements/bonus/redis/.
     image: redis
     restart: on-failure
+    depends_on:
+      - wordpress
     ports:
       - '6379:6379'
     networks:

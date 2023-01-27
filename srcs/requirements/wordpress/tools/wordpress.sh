@@ -28,26 +28,29 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     
     ## For redis-cache
     wp config set --allow-root WP_CACHE_KEY_SALT $DOMAIN_NAME
-    wp config set --allow-root WP_CACHE true
-    wp config set --allow-root WP_REDIS_HOST redis
-    wp config set --allow-root WP_REDIS_PORT 6379
+    wp config set --allow-root WP_CACHE 'true'
+    wp config set --allow-root WP_REDIS_HOST 'redis'
+    wp config set --allow-root WP_REDIS_PORT '6379'
 
     wp plugin install --allow-root redis-cache --activate
     wp redis enable --allow-root
 
     ## For ftp Server
 
-    useradd ftpuser
-    echo "ftpuser:password" | chpasswd
+    adduser --gecos "" $FTP_USER
+    echo "$FTP_USER:$FTP_USER_PW" | chpasswd
 
-    chown -R ftpuser:www-data /var/www/html/
-    chmod -R 775 /var/www/html/
+    mkdir -p /home/$FTP_USER/ftp
 
-    wp config set --allow-root FS_METHOD ftpext
+    chown -R $FTP_USER:$FTP_USER /home/$FTP_USER/ftp
+
+    chmod a-w /home/$FTP_USER/ftp
+
+    wp config set --allow-root FS_METHOD 'ftpext'
     wp config set --allow-root FTP_BASE /var/www/html/
     wp config set --allow-root FTP_USER $FTP_USER
     wp config set --allow-root FTP_PASS $FTP_USER_PW
-    wp config set --allow-root FTP_HOST 127.0.0.1
+    wp config set --allow-root FTP_HOST '127.0.0.1'
 fi
 
 exec "$@"

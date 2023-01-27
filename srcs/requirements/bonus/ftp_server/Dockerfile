@@ -15,3 +15,10 @@ FROM debian:buster
 RUN apt-get update && \
     apt-get install -y vsftpd
 
+COPY ./tools/ftp_server.sh /tmp/ftp_server.sh
+
+RUN chmod +x /tmp/ftp_server.sh
+
+EXPOSE 21
+
+CMD ["/tmp/ftp_server.sh"]

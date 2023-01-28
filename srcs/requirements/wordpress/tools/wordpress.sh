@@ -9,7 +9,9 @@ if [ ! -f /var/www/html/wp-config.php ]; then
 
     mv wp-cli.phar /usr/local/bin/wp
 
-    cd /var/www/html/
+    cd /var/www/html
+
+    chmod 777 /var/www/html
 
     wp core download --allow-root
 

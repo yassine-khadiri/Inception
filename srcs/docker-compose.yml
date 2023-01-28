@@ -9,8 +9,6 @@ services:
       - .env
     volumes:
       - 'db:/var/lib/mysql'
-    ports:
-      - '3306:3306'
     networks:
       - docker-network
   nginx:
@@ -37,8 +35,6 @@ services:
       - 'wordpress:/var/www/html'
     depends_on:
       - mariadb
-    ports:
-      - '9000:9000'
     networks:
       - docker-network
 
@@ -81,6 +77,15 @@ services:
     ports:
       - "21:21"
       - "21100-21110:21100-21110"
+    networks:
+      - docker-network
+
+  website:
+    container_name: garage
+    build: ./requirements/bonus/website/.
+    image: garage
+    ports:
+      - '80:80'
     networks:
       - docker-network
 

@@ -12,9 +12,13 @@
 
 FROM debian:buster
 
-COPY ./garage/* /home/$USER/Desktop/garage
+RUN apt-get update && \
+    apt-get install -y nginx
 
-EXPOSE 9000
+COPY ./garage /var/www/html/garage
 
-CMD ["php-fpm7.3", "-F"]
+COPY ./tools/nginx.conf /etc/nginx/
 
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

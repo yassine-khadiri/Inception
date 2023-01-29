@@ -37,22 +37,14 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     wp plugin install --allow-root redis-cache --activate
     wp redis enable --allow-root
 
-    ## For ftp Server
-
-    adduser --gecos "" $FTP_USER
-    echo "$FTP_USER:$FTP_USER_PW" | chpasswd
-
-    mkdir -p /home/$FTP_USER/ftp
-
-    chown -R $FTP_USER:$FTP_USER /home/$FTP_USER/ftp
-
-    chmod a-w /home/$FTP_USER/ftp
-
     wp config set --allow-root FS_METHOD 'ftpext'
     wp config set --allow-root FTP_BASE /var/www/html/
     wp config set --allow-root FTP_USER $FTP_USER
     wp config set --allow-root FTP_PASS $FTP_USER_PW
-    wp config set --allow-root FTP_HOST '127.0.0.1'
+    wp config set --allow-root FTP_HOST 'ftp-server:21'
+    chmod 777 /var/www/html/wp-content/plugins
+    # chmod 777 /var/www/html/wp-content/themes
+    wp theme install skt-luxury --activate --allow-root
 fi
 
 exec "$@"

@@ -15,6 +15,8 @@ DOCKER_COMPOSE=./srcs/docker-compose.yml
 up:
 	$(shell mkdir -p /home/ykhadiri/data/db)
 	$(shell mkdir -p /home/ykhadiri/data/wordpress)
+	$(shell mkdir -p /home/ykhadiri/data/prometheus/prometheus_data)
+	$(shell mkdir -p /home/ykhadiri/data/grafana)
 	docker-compose -f $(DOCKER_COMPOSE) up -d --build
 
 down:

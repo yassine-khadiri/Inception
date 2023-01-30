@@ -47,11 +47,6 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     # chmod 777 /var/www/html/wp-content/themes
     wp theme install --allow-root skt-luxury --activate
 
-    #For Elasticsearch
-    wp plugin install --allow-root elasticpress --activate
-    wp config set --allow-root EP_HOST 'elasticsearch:9200'
-    wp elasticpress sync --allow-root
-
 fi
 
 exec "$@"

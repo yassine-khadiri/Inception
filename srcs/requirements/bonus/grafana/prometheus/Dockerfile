@@ -12,13 +12,13 @@
 
 FROM debian:buster
 
-RUN apt-get update
-RUN apt-get install -y apt-transport-https curl gnupg
-RUN curl https://packages.grafana.com/gpg.key | apt-key add -
-RUN echo "deb https://packages.grafana.com/oss/deb stable main" | tee -a /etc/apt/sources.list.d/grafana.list
-RUN apt-get update
-RUN apt-get install -y grafana
+RUN apt-get update && apt-get install -y wget gnupg
+RUN wget -q -O - https://packages.grafana.com/gpg.key | apt-key add -
+RUN echo "deb https://packages.grafana.com/oss/deb stable main" > /etc/apt/sources.list.d/grafana.list
+RUN apt-get update && apt-get install -y prometheus
 
-EXPOSE 3000
+COPY ./conf/prometheus.yml /etc/prometheus/
 
-CMD [ "grafana-server", "--homepath", "/usr/share/grafana", "cfg:default.paths.data=/var/lib/grafana/data", "cfg:default.paths.logs=/var/log/grafana", "cfg:default.paths.plugins=/var/lib/grafana/plugins" ]
+EXPOSE 9090
+
+CMD ["prometheus", "--config.file=/etc/prometheus/prometheus.yml"]

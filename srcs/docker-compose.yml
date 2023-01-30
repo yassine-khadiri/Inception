@@ -90,12 +90,29 @@ services:
     networks:
       - docker-network
 
+  prometheus:
+    container_name: prometheus
+    build: ./requirements/bonus/grafana/prometheus/.
+    restart: on-failure
+    image: prometheus
+    ports:
+      - '9090:9090'
+    volumes:
+      - 'prometheus_data:/prometheus'
+    networks:
+      - docker-network
+
   grafana:
     container_name: grafana
     build: ./requirements/bonus/grafana/.
+    restart: on-failure
     image: grafana
+    depends_on:
+      - prometheus
     ports:
       - '3000:3000'
+    volumes:
+      - 'grafana:/var/lib/grafana'
     networks:
       - docker-network
 
@@ -113,6 +130,18 @@ volumes:
     driver_opts:
       type: none
       device: /home/ykhadiri/data/wordpress
+      o: bind
+  prometheus_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/ykhadiri/data/prometheus/prometheus_data
+      o: bind
+  grafana:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/ykhadiri/data/grafana
       o: bind
 
 networks:

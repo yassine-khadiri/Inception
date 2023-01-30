@@ -37,6 +37,7 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     wp plugin install --allow-root redis-cache --activate
     wp redis enable --allow-root
 
+     ## For ftp-server
     wp config set --allow-root FS_METHOD 'ftpext'
     wp config set --allow-root FTP_BASE /var/www/html/
     wp config set --allow-root FTP_USER $FTP_USER
@@ -44,7 +45,13 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     wp config set --allow-root FTP_HOST 'ftp-server:21'
     chmod 777 /var/www/html/wp-content/plugins
     # chmod 777 /var/www/html/wp-content/themes
-    wp theme install skt-luxury --activate --allow-root
+    wp theme install --allow-root skt-luxury --activate
+
+    #For Elasticsearch
+    wp plugin install --allow-root elasticpress --activate
+    wp config set --allow-root EP_HOST 'elasticsearch:9200'
+    wp elasticpress sync --allow-root
+
 fi
 
 exec "$@"

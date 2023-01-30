@@ -1,0 +1,17 @@
+# Elasticsearch Node Configuration
+# -----------------------
+cluster.name: my-cluster-name
+node.name: node-1
+
+# Network Configuration
+# ---------------------
+network.host: 0.0.0.0
+http.port: 9200
+
+# Discovery Configuration
+# -----------------------
+discovery.seed_hosts: []
+
+# Cluster Formation and Election Configuration
+# --------------------------------------------
+discovery.zen.ping.unicast.hosts: ["host1", "host2"]

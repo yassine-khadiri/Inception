@@ -12,9 +12,18 @@
 
 FROM debian:buster
 
-RUN apt-get update && \
-    apt-get install -y filezilla
+RUN apt-get update
+RUN apt-get install -y apt-transport-https curl gnupg
+RUN curl https://packages.grafana.com/gpg.key | apt-key add -
+RUN echo "deb https://packages.grafana.com/oss/deb stable main" | tee -a /etc/apt/sources.list.d/grafana.list
+RUN apt-get update
+RUN apt-get install -y grafana
 
-EXPOSE 21
+RUN addgroup --system grafana && \
+    adduser --system --no-create-home --ingroup grafana grafana
 
-CMD ["filezilla"]
+USER grafana
+
+EXPOSE 3000
+
+CMD [ "grafana-server", "--homepath", "/usr/share/grafana", "cfg:default.paths.data=/var/lib/grafana/data", "cfg:default.paths.logs=/var/log/grafana", "cfg:default.paths.plugins=/var/lib/grafana/plugins" ]

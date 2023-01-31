@@ -12,13 +12,12 @@
 
 FROM debian:buster
 
-RUN apt-get update
-RUN apt-get install -y apt-transport-https curl gnupg
-RUN curl https://packages.grafana.com/gpg.key | apt-key add -
-RUN echo "deb https://packages.grafana.com/oss/deb stable main" | tee -a /etc/apt/sources.list.d/grafana.list
-RUN apt-get update
-RUN apt-get install -y grafana
+RUN apt-get update && apt-get install -y curl apt-transport-https
+RUN curl https://dl.grafana.com/oss/release/grafana_9.3.2_amd64.deb --output grafana.deb
+RUN apt-get install -y ./grafana.deb
+
+WORKDIR /usr/share/grafana
 
 EXPOSE 3000
 
-CMD [ "grafana-server", "--homepath", "/usr/share/grafana", "cfg:default.paths.data=/var/lib/grafana/data", "cfg:default.paths.logs=/var/log/grafana", "cfg:default.paths.plugins=/var/lib/grafana/plugins" ]
+CMD ["/usr/sbin/grafana-server", "--config", "/etc/grafana/grafana.ini", "--homepath", "/usr/share/grafana"]

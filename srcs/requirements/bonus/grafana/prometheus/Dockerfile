@@ -12,9 +12,6 @@
 
 FROM debian:buster
 
-RUN apt-get update && apt-get install -y wget gnupg
-RUN wget -q -O - https://packages.grafana.com/gpg.key | apt-key add -
-RUN echo "deb https://packages.grafana.com/oss/deb stable main" > /etc/apt/sources.list.d/grafana.list
 RUN apt-get update && apt-get install -y prometheus
 
 COPY ./conf/prometheus.yml /etc/prometheus/

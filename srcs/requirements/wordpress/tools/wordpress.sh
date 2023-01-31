@@ -1,7 +1,5 @@
 #!/bin/sh
 
-sed -i '36 s/\/run\/php\/php7.3-fpm.sock/9000/' /etc/php/7.3/fpm/pool.d/www.conf
-
 if [ ! -f /var/www/html/wp-config.php ]; then
     curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
@@ -44,7 +42,7 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     wp config set --allow-root FTP_PASS $FTP_USER_PW
     wp config set --allow-root FTP_HOST 'ftp-server:21'
     chmod 777 /var/www/html/wp-content/plugins
-    # chmod 777 /var/www/html/wp-content/themes
+    chmod 777 /var/www/html/wp-content/themes
     wp theme install --allow-root skt-luxury --activate
 
 fi

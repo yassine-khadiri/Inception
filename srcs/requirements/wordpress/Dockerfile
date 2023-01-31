@@ -13,9 +13,8 @@
 FROM debian:buster
 
 RUN apt-get update && \
-    apt-get install php php7.3-fpm -y && \
-    apt-get install curl -y && \
-    apt-get install php-mysql -y
+    apt-get install -y php php7.3-fpm \
+    curl php-mysql sendmail
 
 COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 

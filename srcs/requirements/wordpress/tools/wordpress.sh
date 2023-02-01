@@ -1,5 +1,7 @@
 #!/bin/sh
 
+sed -i 's/max_execution_time = 30/max_execution_time = 300/' /etc/php/7.3/fpm/php.ini
+
 if [ ! -f /var/www/html/wp-config.php ]; then
     curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
@@ -31,7 +33,7 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     wp config set --allow-root WP_CACHE 'true'
     wp config set --allow-root WP_REDIS_HOST 'redis'
     wp config set --allow-root WP_REDIS_PORT '6379'
-
+z
     wp plugin install --allow-root redis-cache --activate
     wp redis enable --allow-root
 

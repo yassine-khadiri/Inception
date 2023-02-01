@@ -20,7 +20,7 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     wp config set --allow-root DB_PASSWORD $MYSQL_PASSWORD
     wp config set --allow-root DB_HOST $HOST_NAME
 
-    wp core install --allow-root --url=$DOMAIN_NAME --title="cars" --admin_user=$ADMIN_USER --admin_email=$ADMIN_EMAIL --admin_password=$ADMIN_PASSWORD
+    wp core install --allow-root --url=$DOMAIN_NAME --title="Wordpress WebSite" --admin_user=$ADMIN_USER --admin_email=$ADMIN_EMAIL --admin_password=$ADMIN_PASSWORD
 
     wp user create --allow-root $WP_USER $WP_USER_EMAIL --user_pass=$WP_USER_PASSWORD
 

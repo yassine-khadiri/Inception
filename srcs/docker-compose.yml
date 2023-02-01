@@ -44,7 +44,7 @@ services:
     container_name: adminer
     build: ./requirements/bonus/adminer/.
     image: adminer
-    restart: always
+    restart: on-failure
     depends_on:
       - mariadb
     ports:

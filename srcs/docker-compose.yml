@@ -81,7 +81,7 @@ services:
     networks:
       - docker-network
 
-  website:
+  garage:
     container_name: garage
     build: ./requirements/bonus/website/.
     image: garage

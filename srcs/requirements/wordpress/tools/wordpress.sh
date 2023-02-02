@@ -33,7 +33,7 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     wp config set --allow-root WP_CACHE 'true'
     wp config set --allow-root WP_REDIS_HOST 'redis'
     wp config set --allow-root WP_REDIS_PORT '6379'
-z
+
     wp plugin install --allow-root redis-cache --activate
     wp redis enable --allow-root
 

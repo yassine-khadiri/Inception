@@ -64,10 +64,10 @@ services:
     networks:
       - docker-network
 
-  ftp-server:
-    container_name: ftp-server
-    build: ./requirements/bonus/ftp_server/.
-    image: ftp-server:inception
+  ftp:
+    container_name: ftp
+    build: ./requirements/bonus/ftp/.
+    image: ftp:inception
     restart: on-failure
     volumes:
       - 'wordpress:/var/www/html'
@@ -77,7 +77,6 @@ services:
       - wordpress
     ports:
       - "21:21"
-      - "21100-21110:21100-21110"
     networks:
       - docker-network
 
@@ -86,8 +85,6 @@ services:
     build: ./requirements/bonus/website/.
     image: garage:inception
     restart: on-failure
-    ports:
-      - '80:80'
     networks:
       - docker-network
 

@@ -3,8 +3,8 @@ services:
   mariadb:
     container_name: mariadb
     build: ./requirements/mariadb/.
+    image: mariadb:inception
     restart: on-failure
-    image: mariadb
     env_file:
       - .env
     volumes:
@@ -14,8 +14,8 @@ services:
   nginx:
     container_name: nginx
     build: ./requirements/nginx/.
+    image: nginx:inception
     restart: on-failure
-    image: nginx
     depends_on:
       - wordpress
     volumes:
@@ -27,8 +27,8 @@ services:
   wordpress:
     container_name: wordpress
     build: ./requirements/wordpress/.
+    image: wordpress:inception
     restart: on-failure
-    image: wordpress
     env_file:
       - .env
     volumes:
@@ -43,7 +43,7 @@ services:
   adminer:
     container_name: adminer
     build: ./requirements/bonus/adminer/.
-    image: adminer
+    image: adminer:inception
     restart: on-failure
     depends_on:
       - mariadb
@@ -55,7 +55,7 @@ services:
   redis:
     container_name: redis
     build: ./requirements/bonus/redis/.
-    image: redis
+    image: redis:inception
     restart: on-failure
     depends_on:
       - wordpress
@@ -67,8 +67,8 @@ services:
   ftp-server:
     container_name: ftp-server
     build: ./requirements/bonus/ftp_server/.
+    image: ftp-server:inception
     restart: on-failure
-    image: ftp-server
     volumes:
       - 'wordpress:/var/www/html'
     env_file:
@@ -84,7 +84,8 @@ services:
   garage:
     container_name: garage
     build: ./requirements/bonus/website/.
-    image: garage
+    image: garage:inception
+    restart: on-failure
     ports:
       - '80:80'
     networks:
@@ -93,8 +94,8 @@ services:
   prometheus:
     container_name: prometheus
     build: ./requirements/bonus/grafana/prometheus/.
+    image: prometheus:inception
     restart: on-failure
-    image: prometheus
     ports:
       - '9090:9090'
     volumes:
@@ -105,8 +106,8 @@ services:
   grafana:
     container_name: grafana
     build: ./requirements/bonus/grafana/.
+    image: grafana:inception
     restart: on-failure
-    image: grafana
     depends_on:
       - prometheus
     ports:

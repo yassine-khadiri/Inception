@@ -30,4 +30,3 @@ clean:
 
 fclean: clean
 	docker rmi -f $$(docker images -q)
-

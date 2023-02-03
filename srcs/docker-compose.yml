@@ -85,6 +85,8 @@ services:
     build: ./requirements/bonus/website/.
     image: garage:inception
     restart: on-failure
+    ports:
+      - '80:80'
     networks:
       - docker-network
 
